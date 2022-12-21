@@ -1,3 +1,3 @@
 # healthmanager-CD
 
-## Manifiesto de kubernetes y jenkis file para el pipe line
+## Manifiesto de kubernetes y jenkins file para el pipe line de CD
