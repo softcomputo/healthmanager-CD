@@ -1,0 +1,33 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: hema
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      role: hema
+  template:
+    metadata:
+      labels:
+        role: hema
+    spec:
+      containers:
+      - name: hema
+        image: softcomputo/healthmanager_dev:latest
+        ports:
+        - containerPort: 8080
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: hema
+spec:
+  type: NodePort
+  ports:
+  - port: 8080
+    targetPort: 8080
+    nodePort: 30000
+  selector:
+    role: hema
