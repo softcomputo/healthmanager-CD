@@ -1,0 +1,31 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: healthmanager
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      role: healthmanager
+  template:
+    metadata:
+      labels:
+        role: healthmanager
+    spec:
+      containers:
+      - name: healthmanager
+        image: softcomputo/healthmanager:1.4.3
+        ports:
+        - containerPort: 8080
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: healthmanager
+spec:
+  type: LoadBalancer
+  ports:
+  - port: 8080
+    targetPort: 8080
+  selector:
+    role: healthmanager
