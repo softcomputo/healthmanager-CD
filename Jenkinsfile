@@ -11,9 +11,9 @@ git --version'''
     stage('Deploy healthmanager') {
       steps {
         withCredentials(bindings: [
-                      string(credentialsId: 'eks-token', variable: 'api_token')
+                      string(credentialsId: 'token-k8s-do', variable: 'api_token')
                       ]) {
-            sh 'kubectl --token $api_token --server https://BA4AB3262CEF109B9D355F2C0ABE06AF.gr7.us-east-1.eks.amazonaws.com --insecure-skip-tls-verify=true apply -f hm_deployment.yaml '
+            sh 'kubectl --token $api_token --server https://1ba7c9fd-b9dc-4a43-9ce2-66a2ce9aec8b.k8s.ondigitalocean.com --insecure-skip-tls-verify=true apply -f hm_deployment.yaml '
           }
 
         }
@@ -21,9 +21,9 @@ git --version'''
     stage('Deploy svc healthmanager') {
       steps {
         withCredentials(bindings: [
-                      string(credentialsId: 'eks-token', variable: 'api_token')
+                      string(credentialsId: 'token-k8s-do', variable: 'api_token')
                       ]) {
-            sh 'kubectl --token $api_token --server https://BA4AB3262CEF109B9D355F2C0ABE06AF.gr7.us-east-1.eks.amazonaws.com --insecure-skip-tls-verify=true apply -f hema-svc.yaml '
+            sh 'kubectl --token $api_token --server https://1ba7c9fd-b9dc-4a43-9ce2-66a2ce9aec8b.k8s.ondigitalocean.com --insecure-skip-tls-verify=true apply -f hema-svc.yaml '
           }
 
         }
