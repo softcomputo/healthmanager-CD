@@ -23,7 +23,7 @@ git --version'''
         withCredentials(bindings: [
                       string(credentialsId: 'token-k8s-do', variable: 'api_token')
                       ]) {
-            sh ' docker system prune images '
+            sh 'docker system prune --all'
           }
 
         }
