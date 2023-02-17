@@ -23,9 +23,10 @@ kind: Service
 metadata:
   name: healthmanager
 spec:
-  type: LoadBalancer
+  type: NodePort
   ports:
   - port: 8080
     targetPort: 8080
+    nodePort: 30000
   selector:
     role: healthmanager
